@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Number Checker</title>
+  <link rel="stylesheet" href="number_checker.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Number Checker</h1>
+    <label for="num">Enter a number:</label>
+    <input id="num" type="text" placeholder="e.g. 17">
+    <button id="checkBtn">Check</button>
+    <div id="result"></div>
+  </div>
+
+  <Div class="footer">
+    <p>Developed by Jeet Singh 🛜</p>
+     @2025 All rights reserved.
+  </Div>
+</body>
+<script src="number_checker.js">  
+</script>
+</html>
+                                                      // CSS file 
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background: #f9f9f9;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 0.6rem;
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover {
+      background: #1e4fc9;
+    }
+    #result {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      text-align: center;
+      min-height: 1.5rem;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #666;
+    }    
+
+
+                                                  // JAVASCRIPT FILE 
+
+
+function runCheck() {
+      var Number = parseInt(document.getElementById("num").value);
+      const result = document.getElementById("result");
+
+      if (isNaN(Number)) {
+        result.textContent = "Please enter a valid number.";
+        return;
+      }
+
+      if (Number < 2) {
+        result.textContent = "Not a Prime number";
+        return;
+      }
+      if (Number == 2) {
+        result.textContent = Number + " is the smallest prime and even number";
+        return;
+      }
+      for (var i = 2; i < Number; i++) {
+        if (Number % i == 0) {
+          result.textContent = "Not a Prime number. " + i + " is a factor of " + Number;
+          return;
+        }
+      }
+      result.textContent = Number + " is a Prime number";
+    }
+
+    // Button click
+    document.getElementById("checkBtn").addEventListener("click", runCheck);
+
+    // Enter key press
+    document.getElementById("num").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        runCheck();
+      }
+    });
+
+
+
+                                                  
